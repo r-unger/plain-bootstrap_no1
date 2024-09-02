@@ -2,7 +2,7 @@
  * Custom JS functions
  */
 
-window.addEventListener('load', fillGallery)
+window.addEventListener('load', fillGallery);
 
 const initialDelay = 5000;
 const iterationDelay = 1000;
@@ -55,12 +55,22 @@ const itemBlob = `
 `;
 
 function fillGallery() {
-  
+
   const noOfItems = 10;
-  
+
   delayFor(initialDelay);
   if (noOfItems < 1) {
-      // set a placeholder
+    // set a placeholder
+    const gallery = document.getElementById("gallery");
+    var messageDiv = document.createElement("div");
+    messageDiv.setAttribute("class", "row py-lg-5");
+    var oldDiv = gallery.firstElementChild;
+      // I expect there only to be 1 child (or else the other ones are ignored)
+    messageDiv.innerHTML = `
+            <div class="col-lg-6 col-md-8 mx-auto">
+              <p class="lead text-body-secondary">Nothing to see here...</p>
+            </div>`;
+    gallery.replaceChild(messageDiv, oldDiv);
   } else {
     // build up a new gallery
     const gallery = document.getElementById("gallery");
@@ -78,5 +88,29 @@ function fillGallery() {
       itemDiv.innerHTML = itemBlob;
       wrapperDiv.appendChild(itemDiv);
     }
+  }
+}
+
+function refreshGallery() {
+
+  const noOfItems = 0;
+
+  delayFor(initialDelay);
+  if (noOfItems < 1) {
+    // set a placeholder
+    const gallery = document.getElementById("gallery");
+    var messageDiv = document.createElement("div");
+    messageDiv.setAttribute("class", "row py-lg-5");
+    var oldDiv = gallery.firstElementChild;
+      // I expect there only to be 1 child (or else the other ones are ignored)
+    messageDiv.innerHTML = `
+            <div class="col-lg-6 col-md-8 mx-auto">
+              <p class="lead text-body-secondary">Nothing to see here...</p>
+            </div>`;
+    gallery.replaceChild(messageDiv, oldDiv);
+  } else {
+    // TODO
+    // don't throw away the whole gallery and insert a new one,
+    // but examine the individual items
   }
 }
