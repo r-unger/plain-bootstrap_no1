@@ -4,8 +4,8 @@
 
 window.addEventListener('load', fillGallery);
 
-const initialDelay = 5000;
-const iterationDelay = 1000;
+const initialDelay = 100;
+const iterationDelay = 100;
 
 // delay function to simulate a sluggish API response
 function delayFor(duration){
@@ -14,6 +14,38 @@ function delayFor(duration){
         /* Do nothing */ 
     }
 }
+
+const galleryJson = `
+{
+  "gallery": {
+    "items": [
+      {
+        "id": 678,
+        "name": "John Doe",
+        "imgurl": "https://picsum.photos/id/678/300/200",
+        "description": "Some intro about him"
+      },
+      {
+        "id": 157,
+        "name": "Diane Miller",
+        "imgurl": "https://picsum.photos/id/157/300/200",
+        "description": "Some intro about her"
+      },
+      {
+        "id": 464,
+        "name": "Jeff Done",
+        "imgurl": "https://picsum.photos/id/464/300/200",
+        "description": "Some intro about him"
+      },
+      {
+        "id": 342,
+        "name": "Jane Smith",
+        "imgurl": "https://picsum.photos/id/342/300/200",
+        "description": "Other intro about her"
+      }
+    ]
+  }
+}`;
 
 const itemBlob = `
               <div class="card shadow-sm">
